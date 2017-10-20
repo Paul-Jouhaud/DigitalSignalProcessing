@@ -4,3 +4,4 @@ for rapport=0:8
 end
 figure 1;
 plot(line)
+%saveas(plot(line), 'erreur_binaire_theorique.png')
