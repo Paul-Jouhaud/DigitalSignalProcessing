@@ -1,7 +1,5 @@
-line = zeros(1,9);
-for rapport=0:8
-  line(rapport+1) = 0.5 * erfc(sqrt(rapport));
-end
+x = (0:0.1:8);
+y = 0.5 * erfc(sqrt(10.^(x/10)));
 figure 1;
-plot(line)
+plot(x, y)
 %saveas(plot(line), 'erreur_binaire_theorique.png')
