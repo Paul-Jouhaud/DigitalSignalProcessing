@@ -6,9 +6,7 @@ SURECHANTILLONNAGE = 30;
 TAILLE_FORMANT = 100;
 formant_base = formantcos(SURECHANTILLONNAGE*TAILLE_FORMANT+1, SURECHANTILLONNAGE);
 formant_filtre = formantcos(SURECHANTILLONNAGE*TAILLE_FORMANT+1, SURECHANTILLONNAGE);
-canal = zeros(1, length(x_canal));
-mid = floor((length(x_canal) + 1)/2);
-canal(mid) = 10;
+canal = ones(1, length(x_canal)) * 10;
 
 for x = (0:0.1:8)
   i = int8(x*10 + 1);

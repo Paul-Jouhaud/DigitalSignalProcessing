@@ -26,4 +26,4 @@ for x = (0:0.1:8)
 endfor
 figure 1;
 plot((0:0.1:8), teb_min_1, (0:0.1:8), teb_max_1);
-saveas(plot((0:0.1:8), teb_min_1, (0:0.1:8), teb_max_1), 'courbe_canal_simulee_test1.png')
+saveas(plot((0:0.1:8), teb_min_1, (0:0.1:8), teb_max_1), "courbe_canal_simulee_test1.png")
