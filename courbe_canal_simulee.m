@@ -1,31 +1,24 @@
-teb_min = zeros(1, 81);
-teb_max = zeros(1, 81);
-x_canal = -6:0.01:6;
-TAILLE_MESSAGE = 1000;
-SURECHANTILLONNAGE = 30;
-TAILLE_FORMANT = 100;
-formant_base = formantcos(SURECHANTILLONNAGE*TAILLE_FORMANT+1, SURECHANTILLONNAGE);
-formant_filtre = formantcos(SURECHANTILLONNAGE*TAILLE_FORMANT+1, SURECHANTILLONNAGE);
-canal = zeros(1, length(x_canal));
-mid = floor((length(x_canal) + 1)/2);
-canal(mid) = 10;
+TAILLE_MESSAGE = 10000;
+SURECHANTILLONNAGE = 20;
+TAILLE_FORMANT = 20;
+formant_em = formantcos(SURECHANTILLONNAGE*TAILLE_FORMANT+1, SURECHANTILLONNAGE);
+formant_re = formantcos(SURECHANTILLONNAGE*TAILLE_FORMANT+1, SURECHANTILLONNAGE);
+rapport = [0:0.5:8];
+max_list = zeros(1,length(rapport));
+min_list = zeros(1,length(rapport));
 
-for x = (0:0.1:8)
-  i = int8(x*10 + 1);
-  current_teb_min = 1;
-  current_teb_max = 0;
-  for y=1:10
-    temp_teb = erreur_canal(x, TAILLE_MESSAGE, SURECHANTILLONNAGE, formant_base, formant_filtre, canal);
-    if temp_teb > current_teb_max
-      current_teb_max = temp_teb;
-    endif
-    if temp_teb < current_teb_min
-      current_teb_min = temp_teb;
-    endif
-  endfor
-  teb_min(i) = current_teb_min;
-  teb_max(i) = current_teb_max;
-endfor
-figure 1;
-plot((0:0.1:8), teb_min, (0:0.1:8), teb_max)
-saveas(plot((0:0.1:8), teb_min, (0:0.1:8), teb_max), 'courbe_canal_simulee_test3.png')
+TAILLE_CANAL=101;
+c = canal(TAILLE_CANAL, SURECHANTILLONNAGE);
+
+for i=1:length(rapport)
+  erreurs = zeros(1,50);
+  for j=1:length(erreurs)
+    erreurs(j) = erreur_canal(rapport(i), TAILLE_MESSAGE, SURECHANTILLONNAGE, formant_em, formant_re, c);
+  end
+  max_list(i) = max(erreurs);
+  min_list(i) = min(erreurs);
+end
+
+TEB = 0.5 * erfc(sqrt((10.^(rapport/10))));
+
+plot(rapport, max_list, rapport, min_list, rapport, TEB);
