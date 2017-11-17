@@ -9,12 +9,14 @@ min_list = zeros(1,length(rapport));
 
 TAILLE_CANAL=101;
 c = canal(TAILLE_CANAL, SURECHANTILLONNAGE);
+rec_filter = conv(c, formant_re);
+filtre_recepteur = rec_filter(1,end:-1:1)/(rec_filter*rec_filter');
 
 for i=1:length(rapport)
   i
   erreurs = zeros(1,50);
   for j=1:length(erreurs)
-    erreurs(j) = erreur_canal(rapport(i), TAILLE_MESSAGE, SURECHANTILLONNAGE, formant_em, formant_re, c);
+    erreurs(j) = erreur_canal(rapport(i), TAILLE_MESSAGE, SURECHANTILLONNAGE, formant_em, filtre_recepteur, c);
   end
   max_list(i) = max(erreurs);
   min_list(i) = min(erreurs);
@@ -23,3 +25,4 @@ end
 TEB = 0.5 * erfc(sqrt((10.^(rapport/10))));
 
 plot(rapport, max_list, rapport, min_list, rapport, TEB);
+
