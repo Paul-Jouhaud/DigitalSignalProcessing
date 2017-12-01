@@ -31,4 +31,4 @@ end
 plot(x, teb_min, "red", x, teb_max, "blue", x, y, "green")
 title("Taux d'erreur binaire simulé et théorique de la chaîne de transmission idéale")
 legend(["Taux d'erreur binaire minimum", "Taux d'erreur binaire maximum", "Taux d'erreur binaire théorique"])
-savefig("courbe_ideale_simulee.png")
+savefig("data/courbe_ideale_simulee.png")

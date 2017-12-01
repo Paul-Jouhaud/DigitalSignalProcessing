@@ -39,4 +39,4 @@ end
 plot(x, teb_min, "red", x, teb_max, "blue", x, y, "green")
 title("Test final")
 legend(["Erreur minimale du canal", "Erreur maximale du canal", "Taux d'erreur binaire théorique"])
-savefig("courbe_canal_simulee.png")
+savefig("data/courbe_canal_simulee.png")
