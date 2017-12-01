@@ -456,3 +456,9 @@ title("Récepteur sans interférences");
 legend(["Erreur minimale du canal", "Erreur maximale du canal", "Taux d'erreur binaire théorique"]);
 savefig("data/courbe_canal_simulee_sansinterference.png");
 ```
+
+## Égalisation : récepteur avec filtre adaptatif
+
+```
+
+```

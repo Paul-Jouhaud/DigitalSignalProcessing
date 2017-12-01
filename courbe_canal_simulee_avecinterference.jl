@@ -7,14 +7,21 @@ taille_formant = 30;
 formant_base = formantcos(surechantillonnage*taille_formant+1, surechantillonnage);
 formant_filtre = formantcos(surechantillonnage*taille_formant+1, surechantillonnage);
 
-canal = [1];
+x_canal = collect(-6:0.01:6);
+canal = zeros(length(x_canal));
+mid = Int((length(x_canal) + 1)/2);
+canal[mid:length(canal)] = exp.(-x_canal[mid:length(canal)]);
+
+filtre_emetteur = conv(canal, formant_base);
+filtre_emetteur = filtre_emetteur[end:-1:1]/(filtre_emetteur'*filtre_emetteur);
+filtre_recepteur = real(ifft(1./fft(filtre_emetteur)));
 
 for x = collect(0:0.1:8)
     i = Int(x*10) + 1;
     current_teb_min = 1;
     current_teb_max = 0;
     for y = collect(1:10)
-        temp_teb = erreur_canal(x, taille_message, surechantillonnage, formant_base, formant_filtre, canal);
+        temp_teb = erreur_canal(x, taille_message, surechantillonnage, filtre_emetteur, filtre_recepteur, canal);
         if temp_teb > current_teb_max
             current_teb_max = temp_teb;
         end
@@ -33,6 +40,6 @@ for i = collect(1:length(x))
 end
 
 plot(x, teb_min, "red", x, teb_max, "blue", x, y, "green");
-title("Test n°1");
+title("Récepteur sans interférences");
 legend(["Erreur minimale du canal", "Erreur maximale du canal", "Taux d'erreur binaire théorique"]);
-savefig("data/courbe_canal_simulee_test1.png");
+savefig("data/courbe_canal_simulee_avecinterference.png");
