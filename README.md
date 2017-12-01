@@ -1,8 +1,12 @@
 # Traitement Numérique du Signal pour les Télécommunications
 
+
 Ce code a initiallement été développé en Matlab/Octave, puis entièrement ré-écrit en Julia pour des soucis de performances.
 
 Avant d'utiliser ces scripts, veuillez créer un dossier data, dans le même dossier que les fichiers Julia.
+
+## Todo :
+- Envoyer le rapport avant le vendredi 22 décembre à midi pile
 
 Pour l'utiliser, lancé Julia puis la commande suivante :
 
