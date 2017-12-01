@@ -8,4 +8,5 @@ include("reception.jl")
 include("bruit.jl")
 include("erreur.jl")
 include("erreur_canal.jl")
+include("calcul_interferences.jl")
 
