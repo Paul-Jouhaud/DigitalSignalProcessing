@@ -8,6 +8,10 @@ Avant d'utiliser ces scripts, veuillez créer un dossier data, dans le même dos
 ## Todo :
 - Envoyer le rapport avant le vendredi 22 décembre à midi pile
 
+## Critères de notation
+Il faut donner toutes les preuves qui permettent de prouver que le code fonctionne.
+Il faut commenter les scripts et les fonctions.
+
 Pour l'utiliser, lancé Julia puis la commande suivante :
 
 ```
