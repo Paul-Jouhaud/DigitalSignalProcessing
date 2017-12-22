@@ -5,14 +5,12 @@ Ce code a initiallement été développé en Matlab/Octave, puis entièrement r�
 
 Avant d'utiliser ces scripts, veuillez créer un dossier data, dans le même dossier que les fichiers Julia.
 
-## Todo :
-- Envoyer le rapport avant le vendredi 22 décembre à midi pile
+## Utilisation
+Pour tester notre code, il y a deux possibilités :
+- la première est d'utiliser le notebook Jupyter : scripts.ipynb
+- la deuxième est d'inclure l'ensemble des fonctions dont nous avons besoin comme suit, puis de lancer les scripts suivants
 
-## Critères de notation
-Il faut donner toutes les preuves qui permettent de prouver que le code fonctionne.
-Il faut commenter les scripts et les fonctions.
-
-Pour l'utiliser, lancé Julia puis la commande suivante :
+Pour inclure toutes nos fonctions et les bibliothèques dont nous avons besoin :
 
 ```
 include("script.jl")`;
